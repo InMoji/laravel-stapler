@@ -18,7 +18,7 @@ Laravel-Stapler was created by [Travis Bennett](https://twitter.com/tandrewbenne
 * [Contributing](#contributing)
 
 ## Requirements
-This package currently requires php >= 5.4 as well as Laravel >= 4.
+This package currently requires php >= 5.4 as well as Laravel >= 4.  If you're going to be performing image processing as part of your file upload, you'll also need GD, Gmagick, or Imagick (your preference) installed as part of your php environment.
 
 ## Installation
 Laravel-Stapler is distributed as a composer package, which is how it should be used in your app.
@@ -36,6 +36,12 @@ Once this operation completes, the final step is to add the service provider. Op
 
 ```php
     'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider'
+```
+
+Configuration files can be published and edited by running:
+
+```
+php artisan config:publish codesleeve/laravel-stapler
 ```
 
 ## migrating-from-Stapler-v1.0.0-Beta4
@@ -72,8 +78,8 @@ class User extends Eloquent implements StaplerableInterface {
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('avatar', [
 			'styles' => [
-			'medium' => '300x300',
-			'thumb' => '100x100'
+				'medium' => '300x300',
+				'thumb' => '100x100'
 			]
 		]);
 
@@ -141,7 +147,7 @@ In the quickstart example above, calling
 
 
 ### refresh
-The `refresh` command can be used to reprocess uploaded images on a model's attachments.  It workds by calling the reprocess() method on each of the model's attachments (or on specific attachments only).  This is very useful for adding new styles to an existing attachment when a file has already been uploaded for that attachment.
+The `refresh` command can be used to reprocess uploaded images on a model's attachments.  It works by calling the reprocess() method on each of the model's attachments (or on specific attachments only).  This is very useful for adding new styles to an existing attachment when a file has already been uploaded for that attachment.
 
 Reprocess all attachments for the ProfilePicture model:
 `php artisan stapler:refresh ProfilePicture`
