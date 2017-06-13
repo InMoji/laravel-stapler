@@ -1,5 +1,6 @@
 {
     "name": "codesleeve/laravel-stapler",
+    "version":"1.0.04.0",
     "description": "Easy file upload management for the Laravel Framework.",
     "keywords": ["laravel", "file", "upload", "S3", "AWS", "stapler", "paperclip"],
     "license": "MIT",
